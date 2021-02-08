@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/redeluni/SEM3/compare/v1.0.1...v1.1.0) (2021-02-08)
+
+
+### Features
+
+* aggiunta nuova funzionalità ([67bd92a](https://github.com/redeluni/SEM3/commit/67bd92abb8f269201b59e3ab8828dbaa17ce34af))
+
 ## [1.0.1](https://github.com/redeluni/SEM3/compare/v1.0.0...v1.0.1) (2021-02-08)
 
 
