@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/redeluni/SEM3/compare/v1.1.0...v1.2.0) (2021-02-08)
+
+
+### Features
+
+* Il file server.php legge il numero di versione nel file CHANGELOG.md ([900942a](https://github.com/redeluni/SEM3/commit/900942aed60262349bb8a21407e5e6a304204758))
+
 # [1.1.0](https://github.com/redeluni/SEM3/compare/v1.0.1...v1.1.0) (2021-02-08)
 
 
