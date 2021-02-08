@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/redeluni/SEM3/compare/v1.0.0...v1.0.1) (2021-02-08)
+
+
+### Bug Fixes
+
+* eseguen un finto fix ([78e626e](https://github.com/redeluni/SEM3/commit/78e626ebc30562e4cb67c5a20246daf8acf3010e))
+
 # 1.0.0 (2021-02-08)
 
 
