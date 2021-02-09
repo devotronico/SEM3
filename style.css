@@ -5,7 +5,8 @@ li {
 
 .version {
   padding: 2px 6px;
-  background-color: orange;
+  background-color: blue;
+  color: white;
   border-radius: 3px;
 }
 .date {
@@ -15,12 +16,12 @@ li {
 }
 .commit {
   padding: 2px 6px;
-  background-color: orange;
+  background-color: pink;
   border-radius: 3px;
 }
 .type {
   padding: 2px 6px;
-  background-color: pink;
+  background-color: orange;
   border-radius: 3px;
 }
 .message {
