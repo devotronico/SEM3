@@ -14,19 +14,31 @@ function getVersion() {
 
 function parseArray($data) {
     $lines = [];
+    $line = [];
     foreach ($data as $value) {
-        if (preg_match('/^#\s/', $value, $outputNotUsed)) {
-            if ( preg_match('/(^#\s\[)(.*)(\].*)([\d]{4}-[\d]{2}-[\d]{2})/', $value, $output)) {
-                // print_r($output);die;
+        if (preg_match('/^#{1,3}\s/', $value, $outputNotUsed)) {
+            if ( preg_match('/(^##?\s\[)([\d]{1,3}\.[\d]{1,3}\.[\d]{1,3})(\].*)([\d]{4}-[\d]{2}-[\d]{2})/', $value, $output)) {
                 $line['head'] = ['version'=> $output[2],'date'=> $output[4]];
-            } else if ( preg_match('/(^#\s)(.*)(\s\()([\d]{4}-[\d]{2}-[\d]{2})/', $value, $output)) {
+            } else if (preg_match('/(^#\s)([\d]{1,3}\.[\d]{1,3}\.[\d]{1,3})(\s\()([\d]{4}-[\d]{2}-[\d]{2})/', $value, $output)) {
                 $line['head'] = ['version'=> $output[2],'date'=> $output[4]];
+            } else if (preg_match('/(^###\s)([a-z-A-Z\s]{3,30})/', $value, $output)) {
+                $line['type'] = $output[2];
+            }
+        } else if (preg_match('/(^\*\s)(.*)(\s\(\[)([a-z0-9]{7})(\]\()(.*)/', $value, $output)) {
+            $line['body'] =['message'=> $output[2],'commit'=> $output[4]];
+        }
+
+        if (isset($line)) {
+            if (isset($line['head']) && isset($line['type']) && isset($line['body'])) {
+                $lines[] = $line;
+                $line = [];
+                // unset($line);
             }
         }
-        $lines[] = $line;
     }
-    echo '<br>=======================================<br>';
-    echo '<pre>'; print_r($lines); echo '</pre>';
+    // echo '<br>=======================================<br>';
+    // echo '<pre>'; print_r($lines); echo '</pre>';
+    return $lines;
 }
 
 function readChangelog() {
@@ -39,6 +51,6 @@ function readChangelog() {
         $data[] = $result;
     }
     fclose($fn);
-    parseArray($data);
+    return parseArray($data);
     // return $result;
 }
