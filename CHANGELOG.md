@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/redeluni/SEM3/compare/v1.2.1...v1.3.0) (2021-02-09)
+
+
+### Features
+
+* parse il file CHANGELOG.md in array ([0e93f90](https://github.com/redeluni/SEM3/commit/0e93f90dec534527aeaa55d8e65bf590f48a0181))
+
 ## [1.2.1](https://github.com/redeluni/SEM3/compare/v1.2.0...v1.2.1) (2021-02-09)
 
 
