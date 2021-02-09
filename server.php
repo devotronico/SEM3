@@ -17,9 +17,7 @@ function parseArray($data) {
     $line = [];
     $type = '';
     foreach ($data as $key => $value) {
-        // var_dump(count($data));
-        // die();
-        echo  $value . '---<br>';
+        // echo  $value . '---<br>';
         $resetArrayLine = false;
         if (preg_match('/^#{1,3}\s/', $value, $outputNotUsed)) {
             if (preg_match('/(^##?\s)\[?([\d]{1,3}\.[\d]{1,3}\.[\d]{1,3})\]?(.*)([\d]{4}-[\d]{2}-[\d]{2})/', $value, $output)) {

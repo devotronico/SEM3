@@ -15,9 +15,9 @@
 <ul>
 <?php
 $lines = readChangelog();
-echo '<br>=======================================<br>';
-echo '<pre>'; print_r($lines); echo '</pre>';
-echo '<br>=======================================<br>';
+// echo '<br>=======================================<br>';
+// echo '<pre>'; print_r($lines); echo '</pre>';
+// echo '<br>=======================================<br>';
 
 foreach ($lines as $key => $value) {
     ?>
