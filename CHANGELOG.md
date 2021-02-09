@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/redeluni/SEM3/compare/v1.3.0...v1.4.0) (2021-02-09)
+
+
+### Features
+
+* aggiunto il preset di angular ([4f4bc44](https://github.com/redeluni/SEM3/commit/4f4bc44daecbeff35c9667198f3de55b8aaeb8f1))
+
 # [1.3.0](https://github.com/redeluni/SEM3/compare/v1.2.1...v1.3.0) (2021-02-09)
 
 
