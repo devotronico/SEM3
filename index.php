@@ -16,7 +16,8 @@
 <?php
 $lines = readChangelog();
 echo '<br>=======================================<br>';
-// echo '<pre>'; print_r($lines); echo '</pre>';
+echo '<pre>'; print_r($lines); echo '</pre>';
+echo '<br>=======================================<br>';
 
 foreach ($lines as $key => $value) {
     ?>
@@ -24,12 +25,19 @@ foreach ($lines as $key => $value) {
         <p>
             <span class="version"><?=$lines[$key]['head']['version']?></span>
             <span class="date"><?=$lines[$key]['head']['date']?></span>
-            <span class="commit"><?=$lines[$key]['body']['commit']?></span>
+
         </p>
+        <?php
+        foreach ($lines[$key]['body'] as $key => $value) {
+        ?>
         <p>
-            <span class="type"><?=$lines[$key]['type']?></span>
-            <span class="message"><?=$lines[$key]['body']['message']?></span>
+            <span class="type"><?=strtoupper($value['type'])?></span>
+            <span class="message"><?=$value['message']?></span>
+            <span class="commit"><?=$value['commit']?></span>
         </p>
+        <?php
+        }
+        ?>
     </li>
     <?php
 }
