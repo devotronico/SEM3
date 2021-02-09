@@ -15,26 +15,38 @@ function getVersion() {
 function parseArray($data) {
     $lines = [];
     $line = [];
-    foreach ($data as $value) {
+    $type = '';
+    foreach ($data as $key => $value) {
+        // var_dump(count($data));
+        // die();
+        echo  $value . '---<br>';
+        $resetArrayLine = false;
         if (preg_match('/^#{1,3}\s/', $value, $outputNotUsed)) {
-            if ( preg_match('/(^##?\s\[)([\d]{1,3}\.[\d]{1,3}\.[\d]{1,3})(\].*)([\d]{4}-[\d]{2}-[\d]{2})/', $value, $output)) {
+            if (preg_match('/(^##?\s)\[?([\d]{1,3}\.[\d]{1,3}\.[\d]{1,3})\]?(.*)([\d]{4}-[\d]{2}-[\d]{2})/', $value, $output)) {
+                if (count($line) > 0) {
+                    $lines[] = $line;
+                }
+                $line = [];
                 $line['head'] = ['version'=> $output[2],'date'=> $output[4]];
-            } else if (preg_match('/(^#\s)([\d]{1,3}\.[\d]{1,3}\.[\d]{1,3})(\s\()([\d]{4}-[\d]{2}-[\d]{2})/', $value, $output)) {
-                $line['head'] = ['version'=> $output[2],'date'=> $output[4]];
+                // if ($key !== 0) { $resetArrayLine = true; } else { $resetArrayLine = false;}
             } else if (preg_match('/(^###\s)([a-z-A-Z\s]{3,30})/', $value, $output)) {
-                $line['type'] = $output[2];
+                $type = $output[2];
+                // $line['type'][] = $output[2];
             }
         } else if (preg_match('/(^\*\s)(.*)(\s\(\[)([a-z0-9]{7})(\]\()(.*)/', $value, $output)) {
-            $line['body'] =['message'=> $output[2],'commit'=> $output[4]];
+            $line['body'][] =['type'=> $type, 'message'=> $output[2], 'commit'=> $output[4]];
+        } else if (preg_match('/@/', $value, $output)) {
+            $lines[] = $line;
         }
 
-        if (isset($line)) {
-            if (isset($line['head']) && isset($line['type']) && isset($line['body'])) {
-                $lines[] = $line;
-                $line = [];
-                // unset($line);
-            }
-        }
+        // if (isset($line)) {
+        //     if (isset($line['head']) && isset($line['type']) && isset($line['body'])) {
+        //         $lines[] = $line;
+        //         if ($resetArrayLine === true) {
+        //             $line = [];
+        //         }
+        //     }
+        // }
     }
     // echo '<br>=======================================<br>';
     // echo '<pre>'; print_r($lines); echo '</pre>';
@@ -47,9 +59,10 @@ function readChangelog() {
     $data = [];
     while(! feof($fn))  {
         $result = fgets($fn);
-        echo $result . '<br>';
+        // echo $result . '<br>';
         $data[] = $result;
     }
+    $data[] = '@';
     fclose($fn);
     return parseArray($data);
     // return $result;
