@@ -8,9 +8,8 @@
 </head>
 <body>
     <h1>SEM 3</h1>
-    <!-- <a href="/workspace/sem3/server.php">leggi file </a> -->
-    <?php
-    require_once 'server.php';
-    ?>
+    <?php require_once 'server.php'; ?>
+    <h2><?=getVersion()?></h2>
+    <p><?=readChangelog()?></p>
 </body>
 </html>
